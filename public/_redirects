@@ -1,5 +1,4 @@
-# Temporarily disabled redirects for domain testing
-# Uncomment the line below once domain connectivity is confirmed:
-# /* https://prifina.notion.site/About-hub-speak-to-ai-223e4a7702378079b885d158b120d5b3
+/* https://prifina.notion.site/About-hub-speak-to-ai-223e4a7702378079b885d158b120d5b3
 
-# This will show the index.html test page instead of redirecting
+# This file redirects all paths from the old hub.speak-to.ai domain to the Notion documentation page
+# explaining what happened to the service and what users can do
