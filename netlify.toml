@@ -3,6 +3,6 @@
 
 [[redirects]]
   from = "/*"
-  to = "https://prifina.notion.site/About-hub-speak-to-ai-223e4a7702378079b885d158b120d5b3"
+  to = "https://base.prifina.com/:splat"
   status = 301
   force = true
