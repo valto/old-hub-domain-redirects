@@ -1,6 +1,39 @@
 [build]
   publish = "public"
 
+# Root domain redirect
+[[redirects]]
+  from = "/"
+  to = "https://base.prifina.com/"
+  status = 301
+  force = true
+
+# Multi-level paths - strip everything after first segment (UID)
+[[redirects]]
+  from = "/*/*"
+  to = "https://base.prifina.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*/*/*"
+  to = "https://base.prifina.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*/*/*/*"
+  to = "https://base.prifina.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*/*/*/*/*"
+  to = "https://base.prifina.com/:splat"
+  status = 301
+  force = true
+
+# Single level paths pass through unchanged
 [[redirects]]
   from = "/*"
   to = "https://base.prifina.com/:splat"
