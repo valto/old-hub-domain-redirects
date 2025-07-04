@@ -1,50 +1,53 @@
-# Hub Domain Dynamic Redirects
+# Hub Domain Path-Stripping Redirects
 
-This repository manages dynamic redirects for the hub.speak-to.ai service, preserving the original URL structure while pointing to the new base.prifina.com domain.
+This repository manages intelligent redirects for the hub.speak-to.ai service, automatically stripping sub-paths and redirecting to the appropriate UID-level pages on base.prifina.com.
 
 ## Background
 
-The hub.speak-to.ai subdomain was previously used for a service with multiple URLs and endpoints. The service has been migrated to base.prifina.com, and all traffic now dynamically redirects to preserve the original URL structure.
+The hub.speak-to.ai subdomain was previously used with deep URL structures (UID/page/subpage). The service has been migrated to base.prifina.com with a simplified structure where only the UID level is preserved.
 
 ## Structure
 
 ```
 old-hub-domain-redirects/
 ├── README.md
-├── netlify.toml          # Netlify configuration with dynamic redirects
+├── netlify.toml          # Netlify configuration with path-stripping redirects
 └── public/
-    └── _redirects        # Dynamic redirect rules
+    └── _redirects        # Path-stripping redirect rules
 ```
 
-## How dynamic redirects work
+## How path-stripping redirects work
 
-Instead of redirecting everything to a single page, this setup preserves the original URL structure by redirecting each path to the corresponding path on the new domain.
+The system automatically strips all sub-paths after the UID, redirecting users to the main UID page on the new domain.
 
 ## Current redirect behavior
 
-**Dynamic path preservation:**
+**Path stripping examples:**
 - `hub.speak-to.ai` → `base.prifina.com`
-- `hub.speak-to.ai/login` → `base.prifina.com/login`
-- `hub.speak-to.ai/dashboard` → `base.prifina.com/dashboard`
-- `hub.speak-to.ai/api/users/123` → `base.prifina.com/api/users/123`
-- `hub.speak-to.ai/any/deep/path` → `base.prifina.com/any/deep/path`
+- `hub.speak-to.ai/user123` → `base.prifina.com/user123`
+- `hub.speak-to.ai/user123/home` → `base.prifina.com/user123`
+- `hub.speak-to.ai/user123/insights` → `base.prifina.com/user123`
+- `hub.speak-to.ai/user123/dashboard/settings` → `base.prifina.com/user123`
+- `hub.speak-to.ai/abc789/profile/edit/advanced` → `base.prifina.com/abc789`
 
 **Target domain:** https://base.prifina.com
 
-## Benefits of dynamic redirects
+## Benefits of path-stripping redirects
 
-🔗 **Preserves functionality**: Users land on the equivalent page on the new domain  
-📱 **Better user experience**: No confusion about where content moved  
-🔍 **SEO-friendly**: 301 redirects maintain search engine rankings for specific pages  
-⚡ **Seamless migration**: Existing bookmarks and links continue to work  
-📊 **Analytics preservation**: Each page redirect can be tracked individually  
+🎯 **Simplified navigation**: Users land on the main UID page regardless of deep links  
+📱 **Consistent UX**: All old complex URLs funnel to clean, simple destinations  
+🔍 **SEO consolidation**: Multiple old URLs redirect to single authoritative pages  
+⚡ **Reduced 404s**: No broken links from complex old URL structures  
+📊 **Cleaner analytics**: Simplified tracking on the new domain  
+🔗 **Future-proof**: New domain uses simpler, more maintainable URL structure  
 
 ## Technical implementation
 
-- **301 Permanent Redirect**: Informs search engines the content has permanently moved
-- **`:splat` parameter**: Captures the entire path and preserves it in the redirect
-- **Force redirect**: Ensures the redirect takes precedence over any files
-- **Wildcard matching**: `/*` catches all possible URLs under the domain
+- **301 Permanent Redirects**: Visible URL changes, SEO-friendly
+- **Rule precedence**: Most specific patterns (multi-level) processed first
+- **UID preservation**: First path segment (UID) is always preserved
+- **Sub-path stripping**: Everything after UID is automatically removed
+- **Force enabled**: Ensures redirects take precedence over any files
 
 ## Deployment
 
@@ -55,9 +58,9 @@ Instead of redirecting everything to a single page, this setup preserves the ori
 
 ## Usage
 
-To modify the redirect destination:
-1. Update the URL in `public/_redirects` (change `base.prifina.com` to new domain)
-2. Update the URL in `netlify.toml` (change `base.prifina.com` to new domain)
+To modify the redirect destination domain:
+1. Update `base.prifina.com` in `public/_redirects`
+2. Update `base.prifina.com` in `netlify.toml`
 3. Commit and push - Netlify will auto-deploy
 
-This ensures a seamless migration where all existing URLs continue to work on the new domain structure.
+The path-stripping logic will remain the same regardless of the destination domain.
