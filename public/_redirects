@@ -1,40 +1,8 @@
 # Root domain redirect
 /                 https://base.prifina.com/ 301
 
-# Multi-level paths - capture only UID (first segment), strip the rest
-/*/home          https://base.prifina.com/:splat 301
-/*/insights      https://base.prifina.com/:splat 301
-/*/dashboard     https://base.prifina.com/:splat 301
-/*/settings      https://base.prifina.com/:splat 301
-/*/profile       https://base.prifina.com/:splat 301
-/*/analytics     https://base.prifina.com/:splat 301
-/*/reports       https://base.prifina.com/:splat 301
-/*/admin         https://base.prifina.com/:splat 301
+# Multi-level paths - capture only the first segment (UID) using named parameters
+/:uid/*          https://base.prifina.com/:uid 301
 
-# Three-level paths
-/*/*/home        https://base.prifina.com/:splat 301
-/*/*/insights    https://base.prifina.com/:splat 301
-/*/*/dashboard   https://base.prifina.com/:splat 301
-/*/*/settings    https://base.prifina.com/:splat 301
-/*/*/profile     https://base.prifina.com/:splat 301
-/*/*/analytics   https://base.prifina.com/:splat 301
-/*/*/reports     https://base.prifina.com/:splat 301
-/*/*/admin       https://base.prifina.com/:splat 301
-
-# Four-level paths  
-/*/*/*/home      https://base.prifina.com/:splat 301
-/*/*/*/insights  https://base.prifina.com/:splat 301
-/*/*/*/dashboard https://base.prifina.com/:splat 301
-/*/*/*/settings  https://base.prifina.com/:splat 301
-/*/*/*/profile   https://base.prifina.com/:splat 301
-/*/*/*/analytics https://base.prifina.com/:splat 301
-/*/*/*/reports   https://base.prifina.com/:splat 301
-/*/*/*/admin     https://base.prifina.com/:splat 301
-
-# Generic catch-all for any other multi-level patterns (this might be the issue)
-/*/*             https://base.prifina.com/:splat 301
-/*/*/*           https://base.prifina.com/:splat 301
-/*/*/*/*         https://base.prifina.com/:splat 301
-
-# Single level paths pass through unchanged (this should be last)
+# Single level paths pass through unchanged
 /*               https://base.prifina.com/:splat 301
