@@ -1,4 +1,6 @@
-/* https://prifina.notion.site/About-hub-speak-to-ai-223e4a7702378079b885d158b120d5b3
+/* https://base.prifina.com/:splat 200
 
-# This file redirects all paths from the old hub.speak-to.ai domain to the Notion documentation page
-# explaining what happened to the service and what users can do
+# Dynamic redirect: preserves the original path structure
+# hub.speak-to.ai/login -> base.prifina.com/login
+# hub.speak-to.ai/dashboard -> base.prifina.com/dashboard
+# hub.speak-to.ai/any/deep/path -> base.prifina.com/any/deep/path
