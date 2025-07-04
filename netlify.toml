@@ -1,11 +1,8 @@
 [build]
   publish = "public"
 
-# Temporarily disabled redirects for domain testing
-# Uncomment the redirects section below once domain connectivity is confirmed:
-
-# [[redirects]]
-#   from = "/*"
-#   to = "https://prifina.notion.site/About-hub-speak-to-ai-223e4a7702378079b885d158b120d5b3"
-#   status = 301
-#   force = true
+[[redirects]]
+  from = "/*"
+  to = "https://prifina.notion.site/About-hub-speak-to-ai-223e4a7702378079b885d158b120d5b3"
+  status = 301
+  force = true
